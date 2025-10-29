@@ -86,7 +86,35 @@
 <body>
   <header>
     <h1>Billspay Dashboard</h1>
-    <input type="text" id="searchInput" class="search-bar" placeholder="Search billers...">
+
+    <body>
+  <h2>Data from Google Sheet</h2>
+  <table id="sheet-data" border="1"></table>
+
+  <script>
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/1aDKEfpWS4WsRFR8KtDE0MhUM2C25Xu2m7iuQV0DooyA/edit?gid=0#gid=0';
+
+    fetch(sheetUrl)
+      .then(response => response.text())
+      .then(csvText => {
+        const rows = csvText.split('\n').map(r => r.split(','));
+        const table = document.getElementById('sheet-data');
+
+        rows.forEach(row => {
+          const tr = document.createElement('tr');
+          row.forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+      });
+  </script>
+</body>
+</html>
+    
+ <!--   <input type="text" id="searchInput" class="search-bar" placeholder="Search billers...">
   </header>
 
   <main class="dashboard">
@@ -101,7 +129,7 @@
         <!-- ... more API billers will be listed here -->
       </ul>
     </section>
-
+<!--
     <section class="card" id="regularCard">
       <h2>Regular Billers</h2>
       <ul id="regularList">
