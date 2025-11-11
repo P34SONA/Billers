@@ -93,13 +93,14 @@
     <h1>Billspayment Partners</h1>
 
     
-   <input type="text" id="searchInput" class="search-bar" placeholder="Search billers...">
+   <input type="text" id="searchInput" onkeyup="filterList()" class="search-bar" placeholder="Search billers...">
   </header>
 
   <main class="dashboard">
     <section class="card" id="apiCard">
       <h2>API Billers</h2>
       <ul id="apiList">
+		  <p id="noDataMessage" style="display: none;">No data found.</p>
         <li>FLASHPAY</li>
         <li>SKYPAY API</li>
         <li>AEON CREDIT SERVICE PHIL INC. API</li>
